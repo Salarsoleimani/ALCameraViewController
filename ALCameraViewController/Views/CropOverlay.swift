@@ -33,7 +33,7 @@ internal class CropOverlay: UIView {
                 let radius = bounds.width/2 - 1.0  //account for stroke width
                 context.addArc(center: CGPoint(x: bounds.midX, y: bounds.midY), radius: radius, startAngle: 0, endAngle: 2*CGFloat.pi, clockwise: true)
                 
-                UIColor.blue.setStroke()
+                UIColor.clear.setStroke()
                 context.strokePath()
             }
         }
@@ -66,13 +66,14 @@ internal class CropOverlay: UIView {
         return self.cornerLineWidth * 2
     }
 
-    let lineWidth: CGFloat = 1
+    let lineWidth: CGFloat = 2
 
     let outterGapRatio: CGFloat = 1/3
     var outterGap: CGFloat {
         return self.cornerButtonWidth * self.outterGapRatio
     }
-
+    
+  var color: UIColor = .red
     var isResizable: Bool = false
     var isMovable: Bool = false
     var showsCenterPoint = false
@@ -115,6 +116,7 @@ internal class CropOverlay: UIView {
             }
             
             line.frame = lineFrame
+          line.backgroundColor = color
         }
         
         if showsCenterPoint {
@@ -177,7 +179,8 @@ internal class CropOverlay: UIView {
 			hLine.frame = CGRect(x: outterGap, y: vSpacing + outterGap, width: bounds.width - outterGap * 2, height:  lineThickness)
 			vLine.frame = CGRect(x: hSpacing + outterGap, y: outterGap, width: lineThickness, height: bounds.height - outterGap * 2)
         }
-		
+      horizontalLines.forEach { $0.backgroundColor = color }
+      verticalLines.forEach { $0.backgroundColor = color }
     }
 	
     func createLines() {

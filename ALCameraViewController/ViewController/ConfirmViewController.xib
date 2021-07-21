@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,15 +33,16 @@
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASf-ZD-cIs">
-                    <rect key="frame" x="101.66666666666669" y="732" width="64" height="64"/>
+                    <rect key="frame" x="101.66666666666669" y="698" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="J7n-mn-Ebe"/>
                         <constraint firstAttribute="width" constant="64" id="YWt-e6-Bvy"/>
                     </constraints>
+                    <color key="tintColor" systemColor="systemPurpleColor"/>
                     <state key="normal" image="confirmButton"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wyb-8e-TYr">
-                    <rect key="frame" x="303" y="8" width="64" height="64"/>
+                    <rect key="frame" x="303" y="56" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="64" id="B5T-2l-ykm"/>
                         <constraint firstAttribute="height" constant="64" id="dPw-t7-uXu"/>
@@ -46,7 +50,7 @@
                     <state key="normal" image="rotateButton"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRi-ES-LfN">
-                    <rect key="frame" x="225.66666666666663" y="732" width="64" height="64"/>
+                    <rect key="frame" x="225.66666666666663" y="698" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="FdJ-mW-Tx6"/>
                         <constraint firstAttribute="width" constant="64" id="urS-JS-i1S"/>
@@ -54,13 +58,14 @@
                     <state key="normal" image="retakeButton"/>
                 </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="Rlm-lm-cde"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="yRi-ES-LfN" secondAttribute="bottom" constant="16" id="7jo-lC-34t"/>
+                <constraint firstItem="Rlm-lm-cde" firstAttribute="bottom" secondItem="yRi-ES-LfN" secondAttribute="bottom" constant="16" id="7jo-lC-34t"/>
                 <constraint firstItem="ASf-ZD-cIs" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-45" id="89L-rE-rmd"/>
-                <constraint firstAttribute="bottom" secondItem="ASf-ZD-cIs" secondAttribute="bottom" constant="16" id="DZ5-WA-3ZQ"/>
+                <constraint firstItem="Rlm-lm-cde" firstAttribute="bottom" secondItem="ASf-ZD-cIs" secondAttribute="bottom" constant="16" id="DZ5-WA-3ZQ"/>
                 <constraint firstAttribute="bottom" secondItem="yRi-ES-LfN" secondAttribute="bottom" constant="60" id="H4a-3r-r5r"/>
-                <constraint firstItem="Wyb-8e-TYr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="IAo-1m-56l"/>
+                <constraint firstItem="Wyb-8e-TYr" firstAttribute="top" secondItem="Rlm-lm-cde" secondAttribute="top" constant="12" id="IAo-1m-56l"/>
                 <constraint firstItem="oUR-U3-uEM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="J3N-Vr-euu"/>
                 <constraint firstItem="ASf-ZD-cIs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Rwi-4K-QRb"/>
                 <constraint firstItem="ASf-ZD-cIs" firstAttribute="bottom" secondItem="yRi-ES-LfN" secondAttribute="top" constant="-60" id="TLl-L0-yLb"/>
@@ -128,5 +133,8 @@
         <image name="confirmButton" width="44" height="44"/>
         <image name="retakeButton" width="44" height="44"/>
         <image name="rotateButton" width="44" height="44"/>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

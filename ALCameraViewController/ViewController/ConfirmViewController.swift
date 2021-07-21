@@ -62,7 +62,7 @@ public class ConfirmViewController: UIViewController, UIScrollViewDelegate {
             cropOverlay.showsButtons = croppingParameters.allowResizing
         }
     }
-
+  var tintColor: UIColor = .blue
 	public var onComplete: CameraViewCompletion?
 
 	let asset: PHAsset?
@@ -103,7 +103,7 @@ public class ConfirmViewController: UIViewController, UIScrollViewDelegate {
 	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-
+    confirmButton.tintColor = tintColor
 		view.backgroundColor = UIColor.black
 		
 		scrollView.addSubview(imageView)

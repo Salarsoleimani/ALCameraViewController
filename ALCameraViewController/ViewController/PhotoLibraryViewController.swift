@@ -19,6 +19,7 @@ internal let defaultItemSpacing: CGFloat = 1
 public typealias PhotoLibraryViewSelectionComplete = (PHAsset?) -> Void
 
 public class PhotoLibraryViewController: UIViewController {
+    var tintColor: UIColor = .red
     
     internal var assets: PHFetchResult<PHAsset>? = nil
     
@@ -45,12 +46,13 @@ public class PhotoLibraryViewController: UIViewController {
         
         setNeedsStatusBarAppearanceUpdate()
         
-        let buttonImage = UIImage(named: "libraryCancel", in: CameraGlobals.shared.bundle, compatibleWith: nil)?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: buttonImage,
-                                                           style: UIBarButtonItem.Style.plain,
-                                                           target: self,
-                                                           action: #selector(dismissLibrary))
+        let buttonImage = UIImage(named: "libraryCancel", in: CameraGlobals.shared.bundle, compatibleWith: nil)?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        let navBtn = UIBarButtonItem(image: buttonImage,
+                                  style: UIBarButtonItem.Style.plain,
+                                  target: self,
+                                  action: #selector(dismissLibrary))
+        navBtn.tintColor = tintColor
+        navigationItem.leftBarButtonItem = navBtn
         
         view.backgroundColor = UIColor(white: 0.2, alpha: 1)
         view.addSubview(collectionView)

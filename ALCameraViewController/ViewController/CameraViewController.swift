@@ -19,8 +19,9 @@ public typealias CameraViewCompletion = (UIImage?, PHAsset?) -> Void
 
 public extension CameraViewController {
     /// Provides an image picker wrapped inside a UINavigationController instance
-    class func imagePickerViewController(croppingParameters: CroppingParameters, completion: @escaping CameraViewCompletion) -> UINavigationController {
+    class func imagePickerViewController(croppingParameters: CroppingParameters, tintColor: UIColor, completion: @escaping CameraViewCompletion) -> UINavigationController {
         let imagePicker = PhotoLibraryViewController()
+        imagePicker.tintColor = tintColor
         let navigationController = UINavigationController(rootViewController: imagePicker)
         
         navigationController.navigationBar.barTintColor = UIColor.black
@@ -50,7 +51,7 @@ public extension CameraViewController {
 }
 
 open class CameraViewController: UIViewController {
-    
+    var tintColor: UIColor = .blue
     var didUpdateViews = false
     var croppingParameters: CroppingParameters
     var animationRunning = false
@@ -170,11 +171,13 @@ open class CameraViewController: UIViewController {
                 allowsLibraryAccess: Bool = true,
                 allowsSwapCameraOrientation: Bool = true,
                 allowVolumeButtonCapture: Bool = true,
+                tintColor: UIColor = .blue,
                 completion: @escaping CameraViewCompletion) {
 
         self.croppingParameters = croppingParameters
         self.allowsLibraryAccess = allowsLibraryAccess
         self.allowVolumeButtonCapture = allowVolumeButtonCapture
+        self.tintColor = tintColor
         super.init(nibName: nil, bundle: nil)
         onCompletion = completion
         cameraOverlay.isHidden = !croppingParameters.isEnabled || !croppingParameters.cameraOverlay
@@ -516,7 +519,7 @@ open class CameraViewController: UIViewController {
     }
     
     internal func showLibrary() {
-        let imagePicker = CameraViewController.imagePickerViewController(croppingParameters: croppingParameters) { [weak self] image, asset in
+        let imagePicker = CameraViewController.imagePickerViewController(croppingParameters: croppingParameters, tintColor: tintColor) { [weak self] image, asset in
             defer {
                 self?.dismiss(animated: true, completion: nil)
             }
@@ -566,6 +569,7 @@ open class CameraViewController: UIViewController {
 	
 	private func startConfirmController(uiImage: UIImage) {
 		let confirmViewController = ConfirmViewController(image: uiImage, croppingParameters: croppingParameters)
+        confirmViewController.tintColor = tintColor
 		confirmViewController.onComplete = { [weak self] image, asset in
 			defer {
                 //In iOS13, the volume changed notification channel is being called when dismissing this controller

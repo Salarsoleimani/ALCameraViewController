@@ -33,7 +33,8 @@ class ViewController: UIViewController {
                                   minimumSize: minimumSize,
                                   aspectRatioHeightToWidth: CGFloat(ASPECT_RATIO),
                                   maximumZoom: CGFloat(MAX_ZOOM),
-                                  cameraOverlay: false)
+                                  cameraOverlay: false,
+                                  color: .red)
     }
     
     @IBOutlet weak var imageView: UIImageView!
@@ -86,7 +87,7 @@ class ViewController: UIViewController {
             return
         }
         
-        let cameraViewController = CameraViewController(croppingParameters: croppingParameters, allowsLibraryAccess: libraryEnabled) { [weak self] image, asset in
+      let cameraViewController = CameraViewController(croppingParameters: croppingParameters, allowsLibraryAccess: libraryEnabled, tintColor: .purple) { [weak self] image, asset in
             if let image = image {
                 self?.imageView.image = image
             }
@@ -98,7 +99,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func openLibrary(_ sender: Any) {
-        let libraryViewController = CameraViewController.imagePickerViewController(croppingParameters: croppingParameters) { [weak self] image, asset in
+      let libraryViewController = CameraViewController.imagePickerViewController(croppingParameters: croppingParameters, tintColor: .purple) { [weak self] image, asset in
             if let image = image {
                 self?.imageView.image = image
             }

@@ -43,6 +43,9 @@ public struct CroppingParameters {
     
     /// The maximum scale factor the user can zoom in, default of 1
     let maximumZoom : CGFloat
+  
+  /// The color of crop lines
+  let color : UIColor
 
     public init(isEnabled: Bool = false,
                 allowResizing: Bool = true,
@@ -51,7 +54,8 @@ public struct CroppingParameters {
          minimumSize: CGSize = CGSize(width: 60, height: 60),
          aspectRatioHeightToWidth: CGFloat = 1.0,
          maximumZoom: CGFloat = 1.0,
-         cameraOverlay : Bool = true) {
+         cameraOverlay : Bool = true,
+         color: UIColor = .white) {
 
         self.isEnabled = isEnabled
         self.allowResizing = allowResizing
@@ -61,5 +65,6 @@ public struct CroppingParameters {
         self.aspectRatioHeightToWidth = aspectRatioHeightToWidth
         self.maximumZoom = maximumZoom
         self.cameraOverlay = cameraOverlay
+      self.color = color
     }
 }
